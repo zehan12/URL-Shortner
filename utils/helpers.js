@@ -6,6 +6,9 @@ function generateUID() {
     return firstPart + secondPart;
 }
 
-const regUrl = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/
+const isUrlValid = (url) => {
+    const regUrl = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/
+    return regUrl.test(url)
+}
 
-module.exports = { generateUID, regUrl }
+module.exports = { generateUID, isUrlValid }

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const urlSchema = new Schema(
     {
-        originslUrl: {
+        originalUrl: {
             type: String,
             unique: true,
             require: true
@@ -22,4 +22,6 @@ const urlSchema = new Schema(
     {
         timestamps: true
     }
-)
+);
+
+module.exports = mongoose.model("Url", urlSchema);
