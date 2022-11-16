@@ -17,6 +17,10 @@ const urlSchema = new Schema(
             type: String,
             unique: true,
             require: true
+        },
+        click: {
+            type: Number,
+            default:0
         }
     },
     {
