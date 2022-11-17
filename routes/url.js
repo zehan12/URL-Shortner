@@ -31,6 +31,4 @@ router.post('/short', urlController.createShortUrl );
 router.delete('/short/:code', urlController.deleteUrl );
 
 
-router.get('/short/:code', urlController.clickIncrement );
-
 module.exports = router;

@@ -73,19 +73,6 @@ module.exports = {
             return res.status(500).json({ msg: e.message })
         }
     
-    },
-
-    clickIncrement: async ( req, res ) => {
-        try {
-            const urlCode = req.params.code;
-            const url = await URL.findByIdAndUpdate({urlCode});
-            if ( url === null ) return;
-            url.click++
-            url.save();
-            res.end();
-        } catch (e) {
-            return res.status(500).json({ msg: e.message })
-        }
     }
 
 }
