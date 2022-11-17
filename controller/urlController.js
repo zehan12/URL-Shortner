@@ -34,7 +34,7 @@ module.exports = {
                 // check if base url is not valid throw error
                 if (!isUrlValid(BASE_URL)) return res.status(401).json({ msg: "Check the baseURL" });
                 // check url is present in DB or not
-                let url = await URL.findOne({ originslUrl: originalUrl });
+                let url = await URL.findOne({ originalUrl });
                 if (url) {
                     res.status(200).json(url);
                 } else {
