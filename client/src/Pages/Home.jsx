@@ -2,31 +2,36 @@ import { Fragment, useState } from "react";
 import { Button, InputGroup, Form, Container, Spinner, Alert } from 'react-bootstrap';
 import { BASE_URL } from "../utils/constant";
 import axios from "../utils/axios";
+import { useMutation, queryClient } from "react-query";
 
 const Home = () => {
 
     const [url, setUrl] = useState("");
     const [data, setData] = useState("");
-    const [isloading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
+
+
+    const createShortUrl = async ( url ) => {
+          const res = await axios.post('/api/url/short',{originalUrl:url})
+          return res.data;
+    }
+
+    const { mutate, isLoading } = useMutation( createShortUrl, {
+        onSuccess: data => {
+          setData(data);
+        },
+        onError: (error) => {
+            setError(error.response.data.msg)
+           setTimeout(() => setError(""), 6000)
+          }
+      });
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsLoading(true)
-        const res = await axios.post('/api/url/short',{
-            originalUrl:url
-        })
-
-        // const data = await res.json();
-        // if (!res.ok && data.msg) setError(data.msg)
-
-        setIsLoading(false)
-        if (res.data.originalUrl) setData(res.data)
+        mutate(url);
         setUrl("")
-        setTimeout(() => setError(""), 8000)
     }
-
-
 
     return (
         <Fragment>
@@ -47,7 +52,7 @@ const Home = () => {
                     <Form.Control id="basic-url" aria-describedby="basic-addon3" type="text" value={url} onChange={(e) => setUrl(e.target.value)} placeholder=" Enter Your Url Here!!" />
                 </InputGroup>
                 {
-                    isloading ? <Button variant="primary" disabled>
+                    isLoading ? <Button variant="primary" disabled>
                         <Spinner
                             as="span"
                             animation="border"
