@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
 import { Button, InputGroup, Form, Container, Spinner, Alert } from 'react-bootstrap';
 import { BASE_URL } from "../utils/constant";
+import axios from "../utils/axios";
 
 const Home = () => {
 
@@ -11,30 +12,26 @@ const Home = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(url, typeof url, url.length);
         setIsLoading(true)
-        const res = await fetch(BASE_URL + "api/url/short", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ originalUrl: url })
-        });
+        const res = await axios.post('/api/url/short',{
+            originalUrl:url
+        })
 
-        const data = await res.json();
-        if (!res.ok && data.msg) setError(data.msg)
+        // const data = await res.json();
+        // if (!res.ok && data.msg) setError(data.msg)
 
         setIsLoading(false)
-        if (data.originalUrl) setData(data)
+        if (res.data.originalUrl) setData(res.data)
         setUrl("")
         setTimeout(() => setError(""), 8000)
     }
 
 
+
     return (
         <Fragment>
             <Container>
-                <h1 className='rainbow-text'>Url Shortner</h1>
+                <h1 className='rainbow-text h1'>Url Shortner</h1>
                 <Form.Label
                     htmlFor="basic-url">Enter Your Any Long URL </Form.Label>
                 {

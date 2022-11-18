@@ -46,16 +46,26 @@
 }
 
 
-/* Style the rainbow text element. */
-.rainbow-text {
+.h1 {
   font-family: "Work Sans", sans-serif;
   font-weight: 800;
   font-size: 5em;
+  margin-top: 3rem;
   width: 5em;
+}
+
+.icon {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 800;
+  font-size: 2em;
+  width: 8em;
+}
+
+/* Style the rainbow text element. */
+.rainbow-text {
   line-height: 0.9em;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 3rem;
   /* Create a conic gradient. */
   /* Double percentages to avoid blur (#000 10%, #fff 10%, #fff 20%, ...). */
   background: #CA4246;

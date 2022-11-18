@@ -1,6 +1,10 @@
 import { Fragment, useState, useEffect } from "react";
-import { Table, Container } from "react-bootstrap"
+import { Table, Container } from "react-bootstrap";
+import axios from "../utils/axios";
 import QRCode from "qrcode.react";
+import { useQuery } from 'react-query';
+import GlitchLoading from "../components/GlitchLoading";
+
 import { motion } from "framer-motion"
 import { AnimatePresence } from "framer-motion"
 
@@ -8,21 +12,27 @@ import { AnimatePresence } from "framer-motion"
 const List = () => {
 
     const [urlData, setUrlData] = useState([]);
+    const [isError, setIsError] = useState("");
 
-    const fetchUrlData = async () => {
-        const res = await fetch("http://localhost:5000/api/url/show");
-        const data = await res.json();
-        return setUrlData(data);
+    const { isLoading, error, data } = useQuery ( 'urlData', () =>axios.get("api/url/show/") );
+
+    if ( isLoading ) {
+        return <GlitchLoading />
     }
 
-    useEffect(() => {
-        fetchUrlData();
-    }, [])
 
+    const fetchUrlData = async () => {
+        try {          
+            const res = await axios.get("api/url/show/")
+            setUrlData(res.data)
+        } catch (error) {
+            setIsError(error.message)
+        }
+    }
 
     return (
         <Fragment>
-            <Container className="mt-5">
+            <Container style={{padding:"30px"}}>
                 <h1 className="gradient-text">List of Created Short URL</h1>
 
 
@@ -38,8 +48,9 @@ const List = () => {
                     </thead>
                     <tbody>
                         {
-                            urlData.map((ele, i) =>
-                                <tr>
+                            data &&
+                            data.data.map((ele, i) =>
+                                <tr key={ele.urlCode}>
                                     <td>{i + 1}</td>
                                     <td>  <img style={{ height: "16px", width: "16px" }} src={`https://www.google.com/s2/favicons?domain=${ele.originalUrl}`} /> {ele.originalUrl}</td>
                                     <td><a href={ele.shortUrl} target="_blank" rel="noreferrer">{ele.shortUrl}</a></td>
