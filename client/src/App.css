@@ -14,19 +14,6 @@
 }
 
 
-/* .gradient-text {
-  font-family: "Work Sans", sans-serif;
-  font-weight: 800;
-  font-size: 5em;
-  background: linear-gradient(
-    to right, 
-    hsl(98 100% 62%), 
-    hsl(204 100% 59%)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-align: center;
-} */
 
 
 /* fallback for IE */
@@ -221,26 +208,106 @@
 }
 
 
-.backdrop{
+
+/* Styling the checkbox input */
+#checkbox{
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  appearance: none;
+  -webkit-appearance : none;
+  -moz-appearance : none;
+  -o-appearance : none;
+  width: 80px;
+  height: 40px;
+  background: black;
+  border-radius: 22px;
+  cursor: pointer;
+  outline: none;
+}
+/* styling the circle inside the checkbox input */
+#checkbox::before{
+  content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: #000000e1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 40px;
+  height: 35px;
+  background-color:white;
+  border-radius: 35px;
+  top: 2px;
+  left: 2px;
+  cursor: pointer;
+  transition: .3s linear;
+}
+/* Switching to the dark when the checkbox is toggled */
+#checkbox:checked + .container{
+background: rgb(19, 18, 18);
+color: white;
+}
+/* moving the checkbox circle when it's toggled by the user */
+#checkbox:checked::before{
+  left: 40px;
+}
+/* changing the color of the checkbox when it's toggled */
+#checkbox:checked{
+  background: rgb(12, 177, 81);
 }
 
-.modal {
-  width: clamp(50%, 700px, 90% );
-  height: min(50%, 300px);
-  background-color: red;
-  margin: 0 auto;
-  padding: 0 2rem;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.contain {
+  margin-top: 80px;
 }
+
+.para {
+  width: 40%;
+  text-align: center;
+  margin: 20px auto;  
+  font-size: smaller;
+}
+
+.bar{
+  margin:30px auto;
+  width:575px;
+  border-radius:30px;
+  border:1px solid #dcdcdc;
+  background-color: white;
+}
+.bar:hover{
+  box-shadow: 1px 1px 8px 1px #dcdcdc;
+}
+.bar:focus-within{
+  box-shadow: 1px 1px 8px 1px #dcdcdc;
+  outline:none;
+}
+.searchbar{
+  height:45px;
+  border:none;
+  width:500px;
+  font-size:16px;
+  outline: none;
+  
+}
+
+
+.buttons{
+  margin-top:30px;
+}
+.button{
+  background-color: #f5f5f5;
+  border:none;
+  color:#707070;
+  font-size:15px;
+  padding: 10px 20px;
+  margin:5px;
+  border-radius:4px;
+  outline:none;
+}
+.button:hover{
+  border: 1px solid #c8c8c8;
+  padding: 9px 19px;
+  color:#808080;
+}
+.button:focus{
+  border:1px solid #4885ed;
+  padding: 9px 19px;
+}
+
+

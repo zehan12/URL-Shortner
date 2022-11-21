@@ -6,6 +6,7 @@ import List from './Pages/List'
 import { Container } from 'react-bootstrap';
 
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import Footer from './components//Footer/index';
  
 
 function App() {
@@ -25,14 +26,14 @@ function App() {
   }
 
   if ( darkMode  ) {
-    document.body.style.background = 'hsl(204 100% 5%)'
+    document.body.style.backgroundColor = '#1B2B54'
   } else {
     document.body.style.background = '#FFF' 
   }
 
   return (
     <QueryClientProvider client={queryClient}>
-    <div className="App" style={ darkMode ? {backgroundColor: "hsl(204 100% 5%)", color: "white"} : {} }>
+    <div className="App" style={ darkMode ? {backgroundColor: "#1B2B54", color: "white"} : {} }>
       <Header
         handlePage={handlePage}
         handleMode={handleMode}
@@ -44,6 +45,7 @@ function App() {
           <Home mode={darkMode} />
           : <List mode={darkMode} />
       }
+      <Footer />
     </div>
     </QueryClientProvider>
   );

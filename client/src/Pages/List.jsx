@@ -4,18 +4,10 @@ import axios from "../utils/axios";
 import QRCode from "qrcode.react";
 import { useQuery, useMutation } from 'react-query';
 import GlitchLoading from "../components/GlitchLoading";
-
-import { FaRegCopy } from "react-icons/fa";
-
-
-
-
-import { motion } from "framer-motion"
-import { AnimatePresence } from "framer-motion"
-import { BASE_URL } from "../utils/constant";
+import { FaRegCopy, FaTrash, FaEye } from "react-icons/fa";
 import Modal from "../components/Modal/index";
 
-const List = () => {
+const List = ({mode}) => {
 
     const [modalOpen, setModalOpen] = useState(false);
     const [link, setLink] = useState("");
@@ -23,11 +15,11 @@ const List = () => {
 
     const mutation = useMutation({
         mutationFn: (code) => {
-            return axios.delete(BASE_URL + `api/url/short/${code}`)
+            return axios.delete(`api/url/short/${code}`)
         }
     })
 
-    const { isLoading, error, data } = useQuery('urlData', () => axios.get("api/url/show/"));
+    const { isLoading, error, data, refetch } = useQuery('urlData', () => axios.get("api/url/show/"));
 
 
     if (isLoading) {
@@ -50,47 +42,47 @@ const List = () => {
         <Fragment>
             {modalOpen && <Modal setOpenModal={setModalOpen} url={link} />}
 
-            <Container style={{ padding: "30px" }}>
-                <h1 className="gradient-text">List of Created Short URL</h1>
+            <Container className="container-sm" style={{ padding: "2em", marginTop:"3em 1em" }}>
+                <h1 className="gradient-text responsive-font-example">List of Created Short URL</h1>
 
 
-                <Table striped bordered hover>
+                <Table striped bordered hover className={`table-responsive ${mode ? "table-dark" : ""}`}>
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>original url</th>
                             <th>shorten url</th>
                             <th>clicks</th>
-                            <th>code</th>
                             <th>copy</th>
                             <th>Delete</th>
                             <th>View</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         {
                             (mutation.isSuccess || data) &&
                             data.data.map((ele, i) =>
                                 <tr key={ele.urlCode}>
                                     <td>{i + 1}</td>
-                                    <td style={{ align: "left" }}>  <img style={{ height: "16px", width: "16px" }} src={`https://www.google.com/s2/favicons?domain=${ele.originalUrl}`} /> {ele.originalUrl}</td>
+                                    <td className="text-start">  <img style={{ height: "16px", width: "16px", borderRadius: "50%" }} src={`https://www.google.com/s2/favicons?domain=${ele.originalUrl}`} /> {ele.originalUrl}</td>
                                     <td><a href={ele.shortUrl} target="_blank" rel="noreferrer">{ele.shortUrl}</a></td>
                                     <td>{ele.click}</td>
-                                    <td>{ele.urlCode}</td>
                                     <td style={{ cursor: "pointer" }} onClick={() => navigator.clipboard.writeText(ele.shortUrl)}><FaRegCopy /></td>
                                     <td
                                         onClick={() => {
                                             mutation.mutate(ele.urlCode)
                                         }}
                                     // onClick={()=>handleDelete(ele.urlCode)}
-                                    >delete</td>
+                                    >
+                                        <FaTrash color="#8b0000" />
+                                    </td>
                                     <td
                                         onClick={() => {
                                             setLink(ele)
                                             setModalOpen(true)
                                         }}
                                     >
-                                        View</td>
+                                        <FaEye /></td>
 
                                 </tr>
 

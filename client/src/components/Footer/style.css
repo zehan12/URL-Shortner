@@ -1,0 +1,21 @@
+/* Heart Icon
+--------------------------------------------- */
+
+.footer {
+    background-color: antiquewhite;
+    position:absolute;
+    bottom:0;
+    padding: 10px;
+    width:100%;
+    height:60px;   
+}
+.site-footer .icon {
+    height: 100vh;
+	font-size: 20px;
+}
+
+.site-footer .love .icon {
+	font-size: 12px;
+	margin-left: 2px;
+	margin-right: 2px;
+}

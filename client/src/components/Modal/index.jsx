@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css";
 import QRCode from "qrcode.react";
+import { FaRegCopy } from "react-icons/fa";
 
 
 function Modal({ setOpenModal, url }) {
@@ -24,7 +25,7 @@ function Modal({ setOpenModal, url }) {
       
         <div className="body">
   
-          <p>The next page looks amazing. Hope you want to go there!</p>
+          <p>{url.shortUrl}</p>
         </div>
         <div className="footer">
           <button
@@ -35,7 +36,7 @@ function Modal({ setOpenModal, url }) {
           >
             Cancel
           </button>
-          <button>Continue</button>
+          <button><FaRegCopy /></button>
         </div>
       </div>
     </div>

@@ -9,8 +9,7 @@ const Header = ({ handlePage, handleMode, page, mode }) => {
     console.log(mode)
     return (
         <Fragment>
-            <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-                <Container>
+            <Navbar collapseOnSelect classname="container-fluid container-sm" style={{padding:"1em 5em"}} expand="lg" bg={mode ? "dark" : "light"} variant={mode ? "dark" : "light"}>
                 <Navbar.Brand className="rainbow-text icon" href="#home">Url Shortner</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
@@ -31,7 +30,6 @@ const Header = ({ handlePage, handleMode, page, mode }) => {
                             <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
                         </div>
                     </Navbar.Collapse>
-                </Container>
             </Navbar>
         </Fragment>
     )
