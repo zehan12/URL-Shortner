@@ -2,47 +2,66 @@ import { Fragment, useState, useEffect } from "react";
 import { Table, Container } from "react-bootstrap";
 import axios from "../utils/axios";
 import QRCode from "qrcode.react";
-import { useQuery, useMutation } from 'react-query';
+import { useQuery } from 'react-query';
 import GlitchLoading from "../components/GlitchLoading";
 import { FaRegCopy, FaTrash, FaEye } from "react-icons/fa";
 import Modal from "../components/Modal/index";
+import { useMutation } from "react-query";
 
-const List = ({mode}) => {
+const List = ({ mode }) => {
 
     const [modalOpen, setModalOpen] = useState(false);
     const [link, setLink] = useState("");
 
+    const { isLoading, error, data, refetch } = useQuery('urlData', () => axios.get("api/url/show/"));
+    
+    const handleDelete = async (code) => {
+        const res = await axios.delete(`api/url/short/${code}`);
+        console.log(res)
+        return res.data;
 
-    const mutation = useMutation({
-        mutationFn: (code) => {
-            return axios.delete(`api/url/short/${code}`)
+        // try {
+        //     console.log(code)
+        // const res = await axios.delete( BASE_URL+`api/url/short/${code}`);
+
+        // } catch (err) {
+        //     console.log(err)
+        // }
+    };
+    
+    const { mutate } = useMutation(handleDelete, {
+        onSuccess: data => {
+            refetch()
+        },
+        onError: (error) => {
+            console.log(error)
         }
     })
 
-    const { isLoading, error, data, refetch } = useQuery('urlData', () => axios.get("api/url/show/"));
+
+    // const mutation = useMutation({
+    //     mutationFn: (code) => {
+    //         return axios.delete(`api/url/short/${code}`)
+    //     }
+    // })
+
+   
 
 
     if (isLoading) {
         return <GlitchLoading />
     }
 
-    // const handleDelete = async ( code ) => {
-    //     try {
-    //         console.log(code)
-    //     const res = await axios.delete( BASE_URL+`api/url/short/${code}`);
 
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // };
 
+    console.log(useMutation)
 
 
     return (
         <Fragment>
             {modalOpen && <Modal setOpenModal={setModalOpen} url={link} />}
 
-            <Container className="container-sm" style={{ padding: "2em", marginTop:"3em 1em" }}>
+            <Container className="container-sm" style={{ padding: "2em", marginTop: "3em 1em" }}>
                 <h1 className="gradient-text responsive-font-example">List of Created Short URL</h1>
 
 
@@ -60,7 +79,7 @@ const List = ({mode}) => {
                     </thead>
                     <tbody >
                         {
-                            (mutation.isSuccess || data) &&
+                            data &&
                             data.data.map((ele, i) =>
                                 <tr key={ele.urlCode}>
                                     <td>{i + 1}</td>
@@ -69,9 +88,12 @@ const List = ({mode}) => {
                                     <td>{ele.click}</td>
                                     <td style={{ cursor: "pointer" }} onClick={() => navigator.clipboard.writeText(ele.shortUrl)}><FaRegCopy /></td>
                                     <td
-                                        onClick={() => {
-                                            mutation.mutate(ele.urlCode)
-                                        }}
+                                        onClick={() => mutate(ele.urlCode)}
+                                    //      {
+
+                                    //     mutation.mutate(ele.urlCode)
+                                    // }
+                                    // }
                                     // onClick={()=>handleDelete(ele.urlCode)}
                                     >
                                         <FaTrash color="#8b0000" />
