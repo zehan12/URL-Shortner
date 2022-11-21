@@ -1,8 +1,7 @@
 import { Fragment, useState } from "react";
 import { Button, InputGroup, Form, Container, Spinner, Alert } from 'react-bootstrap';
-import { BASE_URL } from "../utils/constant";
 import axios from "../utils/axios";
-import { useMutation, queryClient } from "react-query";
+import { useMutation } from "react-query";
 
 const Home = () => {
 
@@ -13,6 +12,7 @@ const Home = () => {
 
     const createShortUrl = async ( url ) => {
           const res = await axios.post('/api/url/short',{originalUrl:url})
+          console.log(res)
           return res.data;
     }
 

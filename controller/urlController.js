@@ -49,7 +49,7 @@ module.exports = {
                     res.status(200).json(url);
                 }
             } else {
-                return res.status(200).json({ msg: "Enter a Valid URL" });
+                return res.status(401).json({ msg: "Enter a Valid URL" });
             }
         }
         catch (e) {
@@ -60,6 +60,7 @@ module.exports = {
     deleteUrl: async (req, res) => {
         try {
             const urlCode = req.params.code;
+            console.log(urlCode)
             const url = await URL.findOneAndDelete({
                 urlCode
             });
