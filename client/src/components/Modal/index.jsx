@@ -27,7 +27,7 @@ function Modal({ setOpenModal, url }) {
   
           <p>{url.shortUrl}</p>
         </div>
-        <div className="footer">
+        <div className="down">
           <button
             onClick={() => {
               setOpenModal(false);

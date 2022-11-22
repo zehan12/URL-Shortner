@@ -72,9 +72,8 @@ const List = ({ mode }) => {
                             <th>original url</th>
                             <th>shorten url</th>
                             <th>clicks</th>
-                            <th>copy</th>
-                            <th>Delete</th>
-                            <th>View</th>
+                            <th>Actions</th>
+                           
                         </tr>
                     </thead>
                     <tbody >

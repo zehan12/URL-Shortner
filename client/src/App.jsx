@@ -45,7 +45,7 @@ function App() {
           <Home mode={darkMode} />
           : <List mode={darkMode} />
       }
-      <Footer />
+      <Footer mode={darkMode} />
     </div>
     </QueryClientProvider>
   );

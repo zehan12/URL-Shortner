@@ -1,3 +1,3 @@
-const BASE_URL = "http://localhost:5000/";
+const BASE_URL = "https://url-e30t.onrender.com/";
 
 export  { BASE_URL }
