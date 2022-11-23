@@ -17,16 +17,7 @@ const List = ({ mode }) => {
     
     const handleDelete = async (code) => {
         const res = await axios.delete(`api/url/short/${code}`);
-        console.log(res)
         return res.data;
-
-        // try {
-        //     console.log(code)
-        // const res = await axios.delete( BASE_URL+`api/url/short/${code}`);
-
-        // } catch (err) {
-        //     console.log(err)
-        // }
     };
     
     const { mutate } = useMutation(handleDelete, {
@@ -39,22 +30,12 @@ const List = ({ mode }) => {
     })
 
 
-    // const mutation = useMutation({
-    //     mutationFn: (code) => {
-    //         return axios.delete(`api/url/short/${code}`)
-    //     }
-    // })
-
    
 
 
     if (isLoading) {
         return <GlitchLoading />
     }
-
-
-
-    console.log(useMutation)
 
 
     return (
@@ -64,6 +45,9 @@ const List = ({ mode }) => {
             <Container className="container-sm" style={{ padding: "2em", marginTop: "3em 1em" }}>
                 <h1 className="gradient-text responsive-font-example">List of Created Short URL</h1>
 
+
+            {
+                data.data.length !== 0 ?
 
                 <Table striped bordered hover className={`table-responsive ${mode ? "table-dark" : ""}`}>
                     <thead>
@@ -88,12 +72,6 @@ const List = ({ mode }) => {
                                     <td style={{ cursor: "pointer" }} onClick={() => navigator.clipboard.writeText(ele.shortUrl)}><FaRegCopy /></td>
                                     <td
                                         onClick={() => mutate(ele.urlCode)}
-                                    //      {
-
-                                    //     mutation.mutate(ele.urlCode)
-                                    // }
-                                    // }
-                                    // onClick={()=>handleDelete(ele.urlCode)}
                                     >
                                         <FaTrash color="#8b0000" />
                                     </td>
@@ -112,7 +90,12 @@ const List = ({ mode }) => {
                         }
                     </tbody>
                 </Table>
+                :"no data"
+
+               }
             </Container>
+
+
             <Container style={{ display: "flex" }}>
                 {
                     data && data.data.map((url) => <div>
@@ -129,3 +112,4 @@ const List = ({ mode }) => {
 };
 
 export default List;
+
