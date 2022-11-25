@@ -273,6 +273,8 @@
 
 
 .bar {
+  text-align: left;
+  padding-left: 1.3rem;
   margin: 0 auto;
   width: 575px;
   border-radius: 30px;
@@ -305,9 +307,9 @@
 
 
 .button {
-  background-color: #f5f5f5;
+  background-color: #d795c3;
   border: none;
-  color: #707070;
+  color: black;
   font-size: 15px;
   padding: 10px 20px;
   margin: 5px;
@@ -398,6 +400,76 @@ input:checked+.slider:before {
 }
 
 
+.card {
+  width: 50%;
+  padding: 10px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  margin: 40px auto;
+  /* margin-bottom: 100px; */
+}
+
+.card p {
+  margin-bottom: 0;
+}
+
+.card-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-left: 40px;
+}
+
+.card-btn {
+  background-color: crimson;
+  padding-left: 5px;
+  font-family: sans-serif;
+  font-weight: 700;
+  color: white;
+}
+
+.card-btn2{
+  background-color: rgb(8, 96, 178);
+  padding-left: 5px;
+  font-family: sans-serif;
+  font-weight: 700;
+  color: white;
+}
+
+.card-icon {
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.list-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 100px;
+}
+
+.list-table td, .list-table th {
+  padding: 12px 15px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 16px;
+}
+
+.list-table th {
+  background-color: #4885ed;
+  color: white;
+}
+
+.list-table tbody tr:nth-child(even) {
+  background-color: #bdc5fb;
+}
+
+.td-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+
 @media screen and (max-width: 420px) {
   .bar {
     max-width: 100%;
@@ -429,4 +501,42 @@ input:checked+.slider:before {
     height: 200px;
   }
 
+  .card {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 40px ;
+    margin-top: 0;
+    font-family: sans-serif;
+    font-weight: 300;
+  }
+  
+  .card-flex {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+  }
+
+  .card-col {
+    text-align: left;
+    margin: 2px;
+  }
+
+
+  .list-table thead {
+    display: none;
+  }
+
+  .list-table, .list-table tbody , .list-table tr, .list-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .list-table tr {
+    margin-bottom: 15px;
+  }
+
+  .td-flex {
+    display: flex;
+    flex-direction: row;
+  }
 }

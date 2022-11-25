@@ -2,8 +2,11 @@ import { Fragment, useState } from "react";
 import { Button, InputGroup, Form, Container, Spinner, Alert } from 'react-bootstrap';
 import axios from "../utils/axios";
 import { useMutation } from "react-query";
-import { BsLink45Deg } from "react-icons/bs"
+import { BsLink45Deg  } from "react-icons/bs"
 import { ImMagicWand } from "react-icons/im"
+import QRCode from "qrcode.react";
+import { FaRegCopy } from "react-icons/fa";
+import { RiNavigationFill } from "react-icons/ri";
 
 const Home = ({ mode }) => {
 
@@ -61,7 +64,7 @@ const Home = ({ mode }) => {
                 </div>
                 {
                     isLoading ? <div className="buttons" >
-                        <button style={mode ? { color: "black" } : {}} class="button" onClick={(e) => handleSubmit(e)} type="submit">
+                        <button class="button" onClick={(e) => handleSubmit(e)} type="submit">
                             <Spinner
                                 as="span"
                                 animation="border"
@@ -81,6 +84,23 @@ const Home = ({ mode }) => {
             </Container>
 
             <Container>
+                <div className="card">
+                    <div> <h4>Url Created</h4></div>
+                    <div className="card-flex">
+                    <QRCode value={"https://codepen.io/andytran/pen/xweoPN"}  />
+                    <div className="card-col">
+                        <div className="card-btn">Short URL</div>
+                       <p>https://url-e30t.onrender.com//f9ibp8</p>
+                       <div className="card-icon">
+                        <FaRegCopy />
+                        <RiNavigationFill />
+                       </div>
+                       <div className="card-btn2">Original URL</div>
+                       <p> https://medium.com/@geekyants/memoization-usecallback-memo-using-them-wisely-627f21af5db7</p>
+                    </div>
+                    </div>
+                </div>
+
                 {
                     data &&
                     <>

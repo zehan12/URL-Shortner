@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import QRCode from "qrcode.react";
 import { FaRegCopy } from "react-icons/fa";
+import {ImCross} from "react-icons/im"
 
 
 function Modal({ setOpenModal, url }) {
@@ -14,8 +15,8 @@ function Modal({ setOpenModal, url }) {
               setOpenModal(false);
             }}
           >
-            X
-          </button>
+            <ImCross fill="#8b0000" />
+          </button> 
         </div>
         <div className="title">
           <h1>URL</h1>

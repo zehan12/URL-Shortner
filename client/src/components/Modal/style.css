@@ -1,9 +1,9 @@
 .modalBackground {
     width: 100vw;
-    height: 100vh;
+    height: 80vh;
     /* background-color: rgba(900, 900, 900,0.9); */
     background: rgba(0, 0, 0, 0.7);
-
+  
    opacity: 1;
     position: fixed;
     display: flex;
