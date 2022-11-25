@@ -7,6 +7,7 @@ import GlitchLoading from "../components/GlitchLoading";
 import { FaRegCopy, FaTrash, FaEye } from "react-icons/fa";
 import Modal from "../components/Modal/index";
 import { useMutation } from "react-query";
+import SvgComponent from "../components/SvgComponent"
 
 const List = ({ mode }) => {
 
@@ -43,7 +44,7 @@ const List = ({ mode }) => {
             {modalOpen && <Modal setOpenModal={setModalOpen} url={link} />}
 
             <Container className="container-sm" style={{ padding: "2em", marginTop: "3em 1em" }}>
-                <h1 className="gradient-text responsive-font-example">List of Created Short URL</h1>
+                <h1 className="gradient-text">List of Created Short URL</h1>
 
 
             {
@@ -90,7 +91,11 @@ const List = ({ mode }) => {
                         }
                     </tbody>
                 </Table>
-                :"no data"
+                : <div style={{margin:"40px 0", height:"30%"}}>
+                    <h4>No Result To Show</h4>
+                    <SvgComponent className="svg" />
+                    <h4>No Result Found</h4>
+                </div>
 
                }
             </Container>

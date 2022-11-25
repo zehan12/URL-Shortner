@@ -12,14 +12,37 @@
 
 .text {
     font-family: sans-serif;
-    font-size: 1.3rem;
+    font-size: 14px;
+    word-spacing: 5px;
 }
 
 .icons {
-    width: 10%;
+    width: 20%;
     padding: 0.5em 0;
-    margin: 1em auto;
+    margin: 9px auto;
     display: flex;
     justify-content: space-evenly;
 }
 
+.bg-ind {
+    background-color: white;
+    border-radius: 50%
+  }
+
+.bg-git {
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 420px) {
+    
+    .text {
+        font-size: 18px;
+    }
+    .footer {
+        width: 100%;
+      }
+    
+      .icons {
+        width: 300px;
+      }
+}

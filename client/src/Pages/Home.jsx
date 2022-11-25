@@ -53,26 +53,28 @@ const Home = ({ mode }) => {
                     <Form.Control id="basic-url" aria-describedby="basic-addon3" type="text" value={url} onChange={(e) => setUrl(e.target.value)} placeholder=" Enter Your Url Here!!" />
                 </InputGroup> */}
 
-                <Container style={{border:"2px solid black", width:"50%"}} >
-                <div class="bar">
-                    <BsLink45Deg size={30} color="gray" />
-                    <input class="searchbar" value={url} onChange={(e) => setUrl(e.target.value)} type="text" title="Search" placeholder="https://example.com/" />
+                <div style={{ width: "70%", margin: "0 auto" }} >
+                    <div class="bar">
+                        <BsLink45Deg size={30} color="gray" />
+                        <input class="searchbar" value={url} onChange={(e) => setUrl(e.target.value)} type="text" title="Search" placeholder="https://example.com/" />
+                    </div>
                 </div>
-
-                </Container>
                 {
-                    isLoading ? <Button variant="primary" disabled>
-                        <Spinner
-                            as="span"
-                            animation="border"
-                            size="sm"
-                            role="status"
-                            aria-hidden="true"
-                        />
-                        Loading...
-                    </Button> :
+                    isLoading ? <div className="buttons" >
+                        <button style={mode ? { color: "black" } : {}} class="button" onClick={(e) => handleSubmit(e)} type="submit">
+                            <Spinner
+                                as="span"
+                                animation="border"
+                                size="sm"
+                                role="status"
+                                aria-hidden="true"
+                                style={{ marginRight: "10px" }}
+                            />
+                            Loading...
+                        </button>
+                    </div> :
                         <div className="buttons" >
-                            <button style={ mode ? { color: "black"} : {} } class="button" onClick={(e) => handleSubmit(e)} type="submit"> <ImMagicWand /> Generate Link</button>
+                            <button style={mode ? { color: "black" } : {}} class="button" onClick={(e) => handleSubmit(e)} type="submit"> <ImMagicWand /> Generate Link</button>
                         </div>
                     // <Button variant="primary" type='submit' onClick={(e) => handleSubmit(e)}>Submit </Button>
                 }

@@ -20,12 +20,13 @@
 .gradient-text {
   color: red;
 }
+
 /* gradient text for modern browsers */
 @supports (background-clip: text) {
   .gradient-text {
     font-family: "Work Sans", sans-serif;
-  font-weight: 600;
-  font-size: 4em;
+    font-weight: 600;
+    font-size: 4em;
     background-image: linear-gradient(60deg, #E21143, #FFB03A);
     background-clip: text;
     color: transparent;
@@ -58,27 +59,26 @@
   /* Double percentages to avoid blur (#000 10%, #fff 10%, #fff 20%, ...). */
   background: #CA4246;
   background-color: #CA4246;
-  background: conic-gradient(
-    #CA4246 16.666%, 
-    #E16541 16.666%, 
-    #E16541 33.333%, 
-    #F18F43 33.333%, 
-    #F18F43 50%, 
-    #8B9862 50%, 
-    #8B9862 66.666%, 
-    #476098 66.666%, 
-    #476098 83.333%, 
-    #A7489B 83.333%);
-  
+  background: conic-gradient(#CA4246 16.666%,
+      #E16541 16.666%,
+      #E16541 33.333%,
+      #F18F43 33.333%,
+      #F18F43 50%,
+      #8B9862 50%,
+      #8B9862 66.666%,
+      #476098 66.666%,
+      #476098 83.333%,
+      #A7489B 83.333%);
+
   /* Set thee background size and repeat properties. */
   background-size: 57%;
   background-repeat: repeat;
-  
+
   /* Use the text as a mask for the background. */
   /* This will show the gradient as a text color rather than element bg. */
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; 
-  
+  -webkit-text-fill-color: transparent;
+
   /* Animate the text when loading the element. */
   /* This animates it on page load and when hovering out. */
   animation: rainbow-text-animation-rev 0.5s ease forwards;
@@ -98,10 +98,12 @@
     background-size: 57%;
     background-position: 0 0;
   }
+
   20% {
     background-size: 57%;
     background-position: 0 1em;
   }
+
   100% {
     background-size: 300%;
     background-position: -9em 1em;
@@ -115,10 +117,12 @@
     background-size: 300%;
     background-position: -9em 1em;
   }
+
   20% {
     background-size: 57%;
     background-position: 0 1em;
   }
+
   100% {
     background-size: 57%;
     background-position: 0 0;
@@ -144,6 +148,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -187,11 +192,9 @@
   z-index: 3;
   width: 100%;
   max-width: 640px;
-  background-image: radial-gradient(
-      at 27% 37%,
+  background-image: radial-gradient(at 27% 37%,
       hsla(215, 98%, 61%, 1) 0px,
-      transparent 0%
-    ),
+      transparent 0%),
     radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 1) 0px, transparent 50%),
     radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 1) 0px, transparent 50%),
     radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 1) 0px, transparent 50%),
@@ -210,14 +213,14 @@
 
 
 /* Styling the checkbox input */
-#checkbox{
+#checkbox {
   position: fixed;
   top: 20px;
   right: 20px;
   appearance: none;
-  -webkit-appearance : none;
-  -moz-appearance : none;
-  -o-appearance : none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
   width: 80px;
   height: 40px;
   background: black;
@@ -225,30 +228,34 @@
   cursor: pointer;
   outline: none;
 }
+
 /* styling the circle inside the checkbox input */
-#checkbox::before{
+#checkbox::before {
   content: '';
   position: absolute;
   width: 40px;
   height: 35px;
-  background-color:white;
+  background-color: white;
   border-radius: 35px;
   top: 2px;
   left: 2px;
   cursor: pointer;
   transition: .3s linear;
 }
+
 /* Switching to the dark when the checkbox is toggled */
-#checkbox:checked + .container{
-background: rgb(19, 18, 18);
-color: white;
+#checkbox:checked+.container {
+  background: rgb(19, 18, 18);
+  color: white;
 }
+
 /* moving the checkbox circle when it's toggled by the user */
-#checkbox:checked::before{
+#checkbox:checked::before {
   left: 40px;
 }
+
 /* changing the color of the checkbox when it's toggled */
-#checkbox:checked{
+#checkbox:checked {
   background: rgb(12, 177, 81);
 }
 
@@ -256,58 +263,66 @@ color: white;
   margin-top: 80px;
 }
 
+
 .para {
   width: 40%;
   text-align: center;
-  margin: 20px auto;  
+  margin: 3rem auto;
   font-size: smaller;
 }
 
-.bar{
+
+.bar {
   margin: 0 auto;
-  max-width: 100%;
-  border-radius:30px;
-  border:1px solid #dcdcdc;
+  width: 575px;
+  border-radius: 30px;
+  border: 1px solid #dcdcdc;
   background-color: white;
-  border: 2px solid black;
-}
-.bar:hover{
-  box-shadow: 1px 1px 8px 1px #dcdcdc;
-}
-.bar:focus-within{
-  box-shadow: 1px 1px 8px 1px #dcdcdc;
-  outline:none;
 }
 
-.searchbar{
-  height:45px;
-  border:none;
-  font-size:16px;
+.bar:hover {
+  box-shadow: 1px 1px 8px 1px #dcdcdc;
+}
+
+.bar:focus-within {
+  box-shadow: 1px 1px 8px 1px #dcdcdc;
   outline: none;
-  
+}
+
+.searchbar {
+  height: 45px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+
 }
 
 
-.buttons{
-  margin-top:30px;
+
+.buttons {
+  margin-top: 30px;
 }
-.button{
+
+
+.button {
   background-color: #f5f5f5;
-  border:none;
-  color:#707070;
-  font-size:15px;
+  border: none;
+  color: #707070;
+  font-size: 15px;
   padding: 10px 20px;
-  margin:5px;
-  border-radius:4px;
-  outline:none;
+  margin: 5px;
+  border-radius: 4px;
+  outline: none;
 }
-.button:hover{
+
+.button:hover {
   border: 1px solid #c8c8c8;
   padding: 9px 19px;
-  color:#808080;
+  color: #808080;
 }
-.button:focus{
-  border:1px solid #4885ed;
+
+.button:focus {
+  border: 1px solid #4885ed;
   padding: 9px 19px;
 }
 
@@ -354,15 +369,15 @@ color: white;
   transition: .4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: #2196F3;
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
@@ -377,3 +392,41 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+
+.img-result {
+  height: 90%;
+}
+
+
+@media screen and (max-width: 420px) {
+  .bar {
+    max-width: 100%;
+  }
+
+  .button {
+    margin-bottom: 4em;
+  }
+
+  .para {
+    width: 90%;
+    margin: 2em;
+    font-weight: 400;
+    line-height: 1.9;
+  }
+
+  .gradient-text {
+    font-size: 3rem;
+    margin-top: 20px;
+  }
+
+  .img-result {
+    width: 100%;
+    height: 90%;
+  }
+
+  .svg {
+    width: 100px;
+    height: 200px;
+  }
+
+}
