@@ -1,12 +1,13 @@
 import { Fragment, useState } from "react";
-import { Button, InputGroup, Form, Container, Spinner, Alert } from 'react-bootstrap';
+import { Container, Spinner, Alert } from 'react-bootstrap';
 import axios from "../utils/axios";
 import { useMutation } from "react-query";
-import { BsLink45Deg  } from "react-icons/bs"
+import { BsLink45Deg } from "react-icons/bs"
 import { ImMagicWand } from "react-icons/im"
 import QRCode from "qrcode.react";
 import { FaRegCopy } from "react-icons/fa";
 import { RiNavigationFill } from "react-icons/ri";
+import UrlCard from "../components/UrlCard";
 
 const Home = ({ mode }) => {
 
@@ -40,7 +41,7 @@ const Home = ({ mode }) => {
 
     return (
         <Fragment>
-            <Container className="contain">
+            <Container className="contain" style={{height:"100vh"}}>
                 <h1 className='rainbow-text h1'>Url Shortner</h1>
                 <p className="para">Url Shortner is a modern URL shortener with support for custom domains. Shorten URLs, manage your links </p>
                 {
@@ -49,12 +50,6 @@ const Home = ({ mode }) => {
                         {error}
                     </Alert>
                 }
-                {/* <InputGroup className={`mb-3`}>
-                    <InputGroup.Text id="basic-addon3">
-                        https://example.com/
-                    </InputGroup.Text>
-                    <Form.Control id="basic-url" aria-describedby="basic-addon3" type="text" value={url} onChange={(e) => setUrl(e.target.value)} placeholder=" Enter Your Url Here!!" />
-                </InputGroup> */}
 
                 <div style={{ width: "70%", margin: "0 auto" }} >
                     <div class="bar">
@@ -79,36 +74,11 @@ const Home = ({ mode }) => {
                         <div className="buttons" >
                             <button style={mode ? { color: "black" } : {}} class="button" onClick={(e) => handleSubmit(e)} type="submit"> <ImMagicWand /> Generate Link</button>
                         </div>
-                    // <Button variant="primary" type='submit' onClick={(e) => handleSubmit(e)}>Submit </Button>
                 }
-            </Container>
-
-            <Container>
-                <div className="card">
-                    <div> <h4>Url Created</h4></div>
-                    <div className="card-flex">
-                    <QRCode value={"https://codepen.io/andytran/pen/xweoPN"}  />
-                    <div className="card-col">
-                        <div className="card-btn">Short URL</div>
-                       <p>https://url-e30t.onrender.com//f9ibp8</p>
-                       <div className="card-icon">
-                        <FaRegCopy />
-                        <RiNavigationFill />
-                       </div>
-                       <div className="card-btn2">Original URL</div>
-                       <p> https://medium.com/@geekyants/memoization-usecallback-memo-using-them-wisely-627f21af5db7</p>
-                    </div>
-                    </div>
-                </div>
 
                 {
-                    data &&
-                    <>
-                        <h3>Orginal url : {data.originalUrl}</h3>
-                        <h4> Original Url length : {data.originalUrl.length} character </h4>
-                        <h3>Shorten Url : {data.shortUrl} </h3>
-                        <h4> Shorten Url length : {data.shortUrl.length} character </h4>
-                    </>
+                    data && <UrlCard originalUrl={data.originalUrl} shortUrl={data.shortUrl} />
+
                 }
             </Container>
         </Fragment>

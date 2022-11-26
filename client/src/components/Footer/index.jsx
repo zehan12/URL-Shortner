@@ -11,12 +11,6 @@ const Footer = ({mode}) => {
                 <BsTwitter size={30} color="#1D9BF0" />
                 <BsLinkedin size={30} className="bg-ind"  color="#0A66C2"  />
             </div>
-            {/* <p class="love">Made By <BsHeartFill color="red" /> Zehan Khan</p>
-            <div style={{display:"flex"}}>
-                <div>github</div>
-                <div>twitter</div>
-                <div>Linkedin</div>
-            </div> */}
         </div>
     )
 }
