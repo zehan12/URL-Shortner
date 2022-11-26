@@ -41,7 +41,7 @@ module.exports = {
                     // generate a uniqiue id
                     const urlCode = generateUID();
                     // create a short url 
-                    const shortUrl = BASE_URL + "/" + urlCode;
+                    const shortUrl = BASE_URL+urlCode;
                     // create instance of url
                     url = new URL({ originalUrl, shortUrl, urlCode });
                     // save in db

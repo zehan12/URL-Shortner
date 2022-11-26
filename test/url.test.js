@@ -1,7 +1,7 @@
 const { BASE_URL } = require("../utils/constants");
 
 const expect = require("chai").expect;
-const request = require("supertest")("https://url-e30t.onrender.com/api")
+const request = require("supertest")("https://url-e30t.onrender.com/api/")
 require('../routes/url')
 
 
@@ -49,7 +49,7 @@ describe("POST /short", () => {
             const attribute = response.body;
             expect(attribute).to.include.keys("originalUrl", "urlCode", "shortUrl", "click");
             expect(attribute.originalUrl).to.eql("https://github.com/zehan12");
-            expect(attribute.shortUrl).to.eql(`${BASE_URL}/${attribute.urlCode}`)
+            expect(attribute.shortUrl).to.eql(`${BASE_URL}${attribute.urlCode}`)
         });
     })
 
