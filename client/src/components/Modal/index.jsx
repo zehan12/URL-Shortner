@@ -25,8 +25,10 @@ function Modal({ setOpenModal, url }) {
         </div>
       
         <div className="body">
-  
-          <p>{url.shortUrl}</p>
+          <p>Short URL</p>
+          <p style={{fontSize:"22px"}}>{url.shortUrl}</p>
+          <p>Original URL</p>
+          <p style={{fontSize:"22px"}}>{url.shortUrl}</p>
         </div>
         <div className="down">
           <button

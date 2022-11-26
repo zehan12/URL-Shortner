@@ -1,14 +1,10 @@
 import { Fragment } from "react"
-import { Container, Navbar, Nav } from 'react-bootstrap';
-import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
-import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
-import { NavDropdown } from "react-bootstrap";
+import { Navbar, Nav } from 'react-bootstrap';
 
 import "../App.css"
 
 
 const Header = ({ handlePage, handleMode, page, mode }) => {
-    console.log(mode)
     return (
         <Fragment>
             <Navbar collapseOnSelect classname="container-fluid container-sm" style={{ padding: "1em 5em" }} expand="lg" bg={mode ? "dark" : "light"} variant={mode ? "dark" : "light"}>
@@ -27,12 +23,12 @@ const Header = ({ handlePage, handleMode, page, mode }) => {
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Collapse className="justify-content-end">
-                    <label class="switch" style={{margin:"10px"}}>
+                    <label className="switch" style={{margin:"10px"}}>
                         <input type="checkbox" value={mode} onChange={() => handleMode()} />
-                        <span class="slider round"></span>
+                        <span className="slider round"></span>
                     </label>
 
-                    <label class="custom-control-label" for="darkSwitch">{ mode ? "Dark Mode" : "Light Mode" }</label>
+                    <label className="custom-control-label" htmlFor="darkSwitch">{ mode ? "Dark Mode" : "Light Mode" }</label>
                 </Navbar.Collapse>
             </Navbar>
         </Fragment>

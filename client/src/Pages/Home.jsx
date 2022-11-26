@@ -4,9 +4,6 @@ import axios from "../utils/axios";
 import { useMutation } from "react-query";
 import { BsLink45Deg } from "react-icons/bs"
 import { ImMagicWand } from "react-icons/im"
-import QRCode from "qrcode.react";
-import { FaRegCopy } from "react-icons/fa";
-import { RiNavigationFill } from "react-icons/ri";
 import UrlCard from "../components/UrlCard";
 
 const Home = ({ mode }) => {
@@ -18,7 +15,6 @@ const Home = ({ mode }) => {
 
     const createShortUrl = async (url) => {
         const res = await axios.post('/api/url/short', { originalUrl: url })
-        console.log(res)
         return res.data;
     }
 
@@ -52,14 +48,14 @@ const Home = ({ mode }) => {
                 }
 
                 <div style={{ width: "70%", margin: "0 auto" }} >
-                    <div class="bar">
+                    <div className="bar">
                         <BsLink45Deg size={30} color="gray" />
-                        <input class="searchbar" value={url} onChange={(e) => setUrl(e.target.value)} type="text" title="Search" placeholder="https://example.com/" />
+                        <input className="searchbar" value={url} onChange={(e) => setUrl(e.target.value)} type="text" title="Search" placeholder="https://example.com/" />
                     </div>
                 </div>
                 {
                     isLoading ? <div className="buttons" >
-                        <button class="button" onClick={(e) => handleSubmit(e)} type="submit">
+                        <button className="button" onClick={(e) => handleSubmit(e)} type="submit">
                             <Spinner
                                 as="span"
                                 animation="border"
@@ -72,7 +68,7 @@ const Home = ({ mode }) => {
                         </button>
                     </div> :
                         <div className="buttons" >
-                            <button style={mode ? { color: "black" } : {}} class="button" onClick={(e) => handleSubmit(e)} type="submit"> <ImMagicWand /> Generate Link</button>
+                            <button style={mode ? { color: "black" } : {}} className="button" onClick={(e) => handleSubmit(e)} type="submit"> <ImMagicWand /> Generate Link</button>
                         </div>
                 }
 
