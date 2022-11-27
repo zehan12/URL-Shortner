@@ -46,15 +46,16 @@ click to navigation to vist the link or copy to cilpboard
 Example request body:
 ```JSON
 {
-  "data":{
-   		click: 0
-   		createdAt: "2022-11-27T09:36:04.916Z"
-   		originalUrl: "https://medium.com/@zehan9211/the-inception-of-tailwind-css-in-create-react-app-with-yarn-46c958a0b339"
-  		shortUrl: "https://url-e30t.onrender.com/8de6gj"
-  		updatedAt: "2022-11-27T09:36:04.916Z"
-   		 urlCode : "8de6gj"
-   		 __v: 0
-   		 _id: "63832f84ae896fb1ae662443"
+  "data":
+  {
+    click: 0
+    createdAt: "2022-11-27T09:36:04.916Z"
+    originalUrl: "https://medium.com/@zehan9211/the-inception-of-tailwind-css-in-create-react-app-with-yarn-46c958a0b339"
+  	 shortUrl: "https://url-e30t.onrender.com/8de6gj"
+  	 updatedAt: "2022-11-27T09:36:04.916Z"
+    urlCode : "8de6gj"
+    __v: 0
+    _id: "63832f84ae896fb1ae662443"
   }
 }
 ```
@@ -71,14 +72,14 @@ Example request body:
 {
   [
    {
-    	click: 0
-    	createdAt: "2022-11-27T09:36:04.916Z"
-    	originalUrl: "https://medium.com/@zehan9211/the-inception-of-tailwind-css-in-		create-react-app-with-yarn-46c958a0b339"
-    	shortUrl: "https://url-e30t.onrender.com/8de6gj"
-     	updatedAt: "2022-11-27T09:36:04.916Z"
-    	urlCode : "8de6gj"
-    	__v: 0
-    	_id: "63832f84ae896fb1ae662443"
+    click: 0
+    createdAt: "2022-11-27T09:36:04.916Z"
+    originalUrl: "https://medium.com/@zehan9211/the-inception-of-tailwind-css-in-		create-react-app-with-yarn-46c958a0b339"
+    shortUrl: "https://url-e30t.onrender.com/8de6gj"
+    updatedAt: "2022-11-27T09:36:04.916Z"
+    urlCode : "8de6gj"
+    __v: 0
+    _id: "63832f84ae896fb1ae662443"
  	}
   ]
 }
@@ -93,15 +94,16 @@ Required fields: `null`
 Example request body:
 ```JSON
 {
-  "data":{
-   		click: 0
-   		createdAt: "2022-11-27T09:36:04.916Z"
-   		originalUrl: "https://medium.com/@zehan9211/the-inception-of-tailwind-css-in-create-react-app-with-yarn-46c958a0b339"
+  "data":
+    {
+      click: 0
+   	createdAt: "2022-11-27T09:36:04.916Z"
+   	originalUrl: "https://medium.com/@zehan9211/the-inception-of-tailwind-css-in-create-react-app-with-yarn-46c958a0b339"
   		shortUrl: "https://url-e30t.onrender.com/8de6gj"
   		updatedAt: "2022-11-27T09:36:04.916Z"
-   		 urlCode : "8de6gj"
-   		 __v: 0
-   		 _id: "63832f84ae896fb1ae662443"
+      urlCode : "8de6gj"
+   	__v: 0
+      _id: "63832f84ae896fb1ae662443"
   }
 }
 ```
